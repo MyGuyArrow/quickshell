@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-08T05:00:00Z",
+  "title": "Design System: acs island",
+  "platform": "linux-desktop (Quickshell 0.3.1 / Qt 6 QML / Hyprland layer-shell). Tokens are QML properties on the root PanelWindow in shell.qml, every glass colour resolved at runtime from the Omarchy theme's colors.toml; the CSS below uses the shell.qml fallback literals (Tokyo Night) and is a rendering approximation for the panel only.",
+  "extensions": {
+    "colorMeta": {
+      "accent":      { "role": "primary", "displayName": "Theme Accent", "canonical": "root.accent = colors.toml accent (fallback #7aa2f7)", "tonalRamp": ["#0d1a33", "#1a2f5c", "#2a4a8a", "#4470b8", "#5c8ad6", "#7aa2f7", "#a3befa", "#d5e2fd"] },
+      "accent-text": { "role": "primary", "displayName": "Accent Text", "canonical": "root.accentText = accent luma > 0.6 ? themeBg : themeFg", "tonalRamp": ["#1a1b26", "#24283b", "#414868", "#565f89", "#7a83a8", "#9aa5cc", "#c0caf5", "#e0e6fb"] },
+      "theme-bg":    { "role": "neutral", "displayName": "Theme Background", "canonical": "root.themeBg = colors.toml background (fallback #1a1b26)", "tonalRamp": ["#0b0c14", "#12131c", "#1a1b26", "#24283b", "#2f3550", "#414868", "#565f89", "#7a83a8"] },
+      "glass":       { "role": "neutral", "displayName": "Glass", "canonical": "a(themeBg, dark ? 0.62 : 0.72)", "tonalRamp": ["rgba(26,27,38,0.95)", "rgba(26,27,38,0.85)", "rgba(26,27,38,0.75)", "rgba(26,27,38,0.62)", "rgba(26,27,38,0.50)", "rgba(26,27,38,0.35)", "rgba(26,27,38,0.20)", "rgba(26,27,38,0.08)"] },
+      "edge":        { "role": "neutral", "displayName": "Edge", "canonical": "a(themeFg, 0.16); themeFg = bright_foreground else foreground", "tonalRamp": ["rgba(192,202,245,0.04)", "rgba(192,202,245,0.08)", "rgba(192,202,245,0.11)", "rgba(192,202,245,0.16)", "rgba(192,202,245,0.24)", "rgba(192,202,245,0.40)", "rgba(192,202,245,0.60)", "rgba(192,202,245,0.85)"] },
+      "specular":    { "role": "neutral", "displayName": "Specular", "canonical": "a(themeFg, 0.30)", "tonalRamp": ["rgba(192,202,245,0.06)", "rgba(192,202,245,0.12)", "rgba(192,202,245,0.18)", "rgba(192,202,245,0.30)", "rgba(192,202,245,0.45)", "rgba(192,202,245,0.60)", "rgba(192,202,245,0.75)", "rgba(192,202,245,0.85)"] },
+      "tile":        { "role": "neutral", "displayName": "Tile", "canonical": "a(themeBg2, 0.62); themeBg2 = lighter_background else background", "tonalRamp": ["rgba(36,40,59,0.15)", "rgba(36,40,59,0.30)", "rgba(36,40,59,0.45)", "rgba(36,40,59,0.62)", "rgba(36,40,59,0.75)", "rgba(36,40,59,0.85)", "rgba(36,40,59,0.92)", "rgba(36,40,59,1)"] },
+      "tile-hover":  { "role": "neutral", "displayName": "Tile Hover", "canonical": "a(themeBg2, 0.92)", "tonalRamp": ["rgba(36,40,59,0.20)", "rgba(36,40,59,0.35)", "rgba(36,40,59,0.50)", "rgba(36,40,59,0.62)", "rgba(36,40,59,0.75)", "rgba(36,40,59,0.85)", "rgba(36,40,59,0.92)", "rgba(36,40,59,1)"] },
+      "circle-off":  { "role": "neutral", "displayName": "Circle Off", "canonical": "a(themeMuted, 0.95); themeMuted = muted else selection", "tonalRamp": ["rgba(65,72,104,0.15)", "rgba(65,72,104,0.30)", "rgba(65,72,104,0.45)", "rgba(65,72,104,0.60)", "rgba(65,72,104,0.75)", "rgba(65,72,104,0.85)", "rgba(65,72,104,0.95)", "rgba(65,72,104,1)"] },
+      "track":       { "role": "neutral", "displayName": "Track", "canonical": "a(themeMuted, 0.85)", "tonalRamp": ["rgba(65,72,104,0.15)", "rgba(65,72,104,0.30)", "rgba(65,72,104,0.45)", "rgba(65,72,104,0.60)", "rgba(65,72,104,0.75)", "rgba(65,72,104,0.85)", "rgba(65,72,104,0.95)", "rgba(65,72,104,1)"] },
+      "text1":       { "role": "neutral", "displayName": "Text 1 / Capsule Fill", "canonical": "root.themeFg = bright_foreground else foreground (fallback #c0caf5)", "tonalRamp": ["#1a1b26", "#2f3550", "#414868", "#565f89", "#7a83a8", "#9aa5cc", "#c0caf5", "#e0e6fb"] },
+      "text2":       { "role": "neutral", "displayName": "Text 2", "canonical": "root.themeFgDim = dark_foreground else muted (fallback #565f89)", "tonalRamp": ["#1a1b26", "#24283b", "#2f3550", "#414868", "#565f89", "#7a83a8", "#9aa5cc", "#c0caf5"] },
+      "pill":        { "role": "neutral", "displayName": "Pill Black", "canonical": "#050505 (theme-independent)", "tonalRamp": ["#050505", "#111111", "#1c1c1e", "#2c2c2e", "#3a3a3c", "#48484a", "#636366", "#8e8e93"] },
+      "pill-text":   { "role": "neutral", "displayName": "Pill Text", "canonical": "#f5f5f7 (theme-independent)", "tonalRamp": ["#1d1d1f", "#3a3a3c", "#5c5c5e", "#8e8e93", "#aeaeb2", "#d1d1d6", "#e5e5ea", "#f5f5f7"] },
+      "pill-dim":    { "role": "neutral", "displayName": "Pill Dim", "canonical": "#8e8e93 (theme-independent)", "tonalRamp": ["#1c1c1e", "#2c2c2e", "#48484a", "#636366", "#8e8e93", "#aeaeb2", "#c7c7cc", "#e5e5ea"] },
+      "danger":      { "role": "tertiary", "displayName": "Danger", "canonical": "root.danger = colors.toml red (fallback #f7768e)", "tonalRamp": ["#3d0f1b", "#6b1a2f", "#9a2645", "#c9385f", "#f7768e", "#f99aab", "#fbbfc9", "#fde1e6"] },
+      "shadow":      { "role": "neutral", "displayName": "Island Shadow", "canonical": "rgba(0,0,0, control ? 0.09 : 0.06) x4 stacked", "tonalRamp": ["rgba(0,0,0,0.30)", "rgba(0,0,0,0.20)", "rgba(0,0,0,0.14)", "rgba(0,0,0,0.09)", "rgba(0,0,0,0.06)", "rgba(0,0,0,0.04)", "rgba(0,0,0,0.02)", "rgba(0,0,0,0.01)"] }
+    },
+    "typographyMeta": {
+      "title":    { "displayName": "Title", "purpose": "PageHeader title beside the back circle. Only place Font.Bold appears besides today's date." },
+      "headline": { "displayName": "Headline", "purpose": "ToggleRow label, now-playing title, calendar month, OSD percentage. 14px variant for pill clock and notify title." },
+      "label":    { "displayName": "Label", "purpose": "SquareTile, Row_ and SliderTile labels; the most common text on the surface." },
+      "body":     { "displayName": "Body", "purpose": "Subs, artist, trailing values. Chips use it at 600." },
+      "caption":  { "displayName": "Caption", "purpose": "SquareTile and Row_ subs." },
+      "section":  { "displayName": "Section", "purpose": "Uppercase grouped-list header inside pages (POWER, DEVICES, OUTPUT). Never above a title." },
+      "glyph":    { "displayName": "Glyph", "purpose": "Material codepoints from JetBrainsMono Nerd Font via root.ic, drawn by the Glyph Item which centres on ink bounds; 15 in circles and capsules, 17 play, 20 transport." }
+    },
+    "shadows": [
+      { "name": "island-shadow", "value": "four stacked rectangles: offset (-2i, 2+2i), size +4i, radius +2i, rgba(0,0,0,0.09) open / 0.06 collapsed; CSS approx 0 2px 0 rgba(0,0,0,.09), 0 4px 4px rgba(0,0,0,.09), 0 6px 8px rgba(0,0,0,.09), 0 8px 12px rgba(0,0,0,.09)", "purpose": "The only shadow. Always under the island." },
+      { "name": "panel-specular", "value": "1px horizontal gradient transparent -> specular -> transparent, inset 1px at top", "purpose": "Control centre top highlight; visible only when open." },
+      { "name": "module-specular", "value": "same gradient at 0.6x alpha, inset by module radius", "purpose": "Top highlight on every Module." }
+    ],
+    "motion": [
+      { "name": "island-grow", "value": "240ms Easing.OutCubic on width and height; 240ms linear on radius; 220ms ColorAnimation", "purpose": "Pill -> OSD -> notify -> control centre transitions." },
+      { "name": "colour-state", "value": "160ms ColorAnimation (140ms on Chips)", "purpose": "Circle on/off, Module hover, chip select." },
+      { "name": "press", "value": "scale 0.92, 120ms NumberAnimation", "purpose": "Circle press feedback." },
+      { "name": "capsule-fill", "value": "90ms NumberAnimation on width", "purpose": "Slider fill follows the value." },
+      { "name": "workspace-dot", "value": "160ms OutCubic on width", "purpose": "Focused workspace pill widens." },
+      { "name": "osd-hold", "value": "1400ms Timer", "purpose": "OSD capsule stays after the last change." },
+      { "name": "media-hold", "value": "5000ms Timer", "purpose": "Media notify stays after a track starts." }
+    ],
+    "breakpoints": [
+      { "name": "pill", "value": "idleRow.implicitWidth + 30 x 40" },
+      { "name": "osd", "value": "330 x 58" },
+      { "name": "notify", "value": "460 x 76" },
+      { "name": "control", "value": "360 x (controlCol.implicitHeight + 28)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Circle (off / on)",
+      "kind": "button",
+      "refersTo": "circle-on",
+      "description": "30px capsule holding a 15px ink-centred glyph; muted theme colour off, theme accent on. The state carrier of the whole system.",
+      "html": "<span class=\"ds-circle\">●</span> <span class=\"ds-circle ds-on\">●</span>",
+      "css": ".ds-circle{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:15px;background:rgba(65,72,104,.95);color:#c0caf5;font:15px 'JetBrainsMono Nerd Font',monospace;transition:background .16s,transform .12s;cursor:pointer}.ds-circle:active{transform:scale(.92)}.ds-circle.ds-on{background:#7aa2f7;color:#1a1b26}"
+    },
+    {
+      "name": "Module",
+      "kind": "card",
+      "refersTo": "module",
+      "description": "Glass tile: 20px radius, lighter_background at .62, hairline foreground edge, 1px specular top. Hover lifts alpha to .92.",
+      "html": "<div class=\"ds-module\"><span class=\"ds-circle\">●</span><div class=\"ds-module-text\"><div class=\"ds-label\">Wi-Fi</div><div class=\"ds-sub\">Indiragangadhar</div></div></div>",
+      "css": ".ds-module{position:relative;box-sizing:border-box;width:160px;height:76px;padding:10px;border-radius:20px;background:rgba(36,40,59,.62);border:1px solid rgba(192,202,245,.11);display:flex;flex-direction:column;gap:2px;transition:background .16s;font-family:'SF Pro Text',system-ui,sans-serif;color:#c0caf5}.ds-module:hover{background:rgba(36,40,59,.92)}.ds-module::before{content:'';position:absolute;left:20px;right:20px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(192,202,245,.18),transparent)}.ds-module .ds-circle{width:26px;height:26px;border-radius:13px;background:rgba(65,72,104,.95);color:#c0caf5}.ds-module-text{margin-top:auto}.ds-label{font-size:12px;font-weight:600}.ds-sub{font-size:10px;color:#565f89}"
+    },
+    {
+      "name": "Capsule Slider",
+      "kind": "input",
+      "refersTo": "capsule-slider-fill",
+      "description": "30px muted track with a theme-foreground fill; the glyph rides inside the fill in the theme background, reading as a cut-out.",
+      "html": "<div class=\"ds-capsule\"><div class=\"ds-capsule-fill\" style=\"width:64%\"></div><span class=\"ds-capsule-glyph\">◐</span></div>",
+      "css": ".ds-capsule{position:relative;width:300px;height:30px;border-radius:15px;background:rgba(65,72,104,.85);overflow:hidden;cursor:pointer}.ds-capsule-fill{position:absolute;inset:0 auto 0 0;min-width:30px;border-radius:15px;background:#c0caf5;transition:width .09s}.ds-capsule-glyph{position:absolute;left:8px;top:0;height:30px;display:flex;align-items:center;color:#1a1b26;font:15px 'JetBrainsMono Nerd Font',monospace}"
+    },
+    {
+      "name": "Row_",
+      "kind": "nav",
+      "refersTo": "row",
+      "description": "List item inside a page: 14px radius glass, optional 26px circle, label/sub, trailing value or accent check.",
+      "html": "<div class=\"ds-row\"><span class=\"ds-circle\">●</span><div class=\"ds-row-text\"><div class=\"ds-label\">Lock Screen</div></div><span class=\"ds-row-trailing\">✓</span></div>",
+      "css": ".ds-row{box-sizing:border-box;display:flex;align-items:center;gap:10px;width:320px;height:40px;padding:0 12px 0 10px;border-radius:14px;background:rgba(36,40,59,.62);border:1px solid rgba(192,202,245,.11);color:#c0caf5;font-family:'SF Pro Text',system-ui,sans-serif;transition:background .16s;cursor:pointer}.ds-row:hover{background:rgba(36,40,59,.92)}.ds-row .ds-circle{width:26px;height:26px;border-radius:13px;background:rgba(65,72,104,.95);color:#c0caf5}.ds-row-text{flex:1}.ds-row .ds-label{font-size:12px;font-weight:600}.ds-row-trailing{font-size:15px;color:#7aa2f7}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "28px capsule option; selected fills with the accent and drops its border.",
+      "html": "<span class=\"ds-chip\">Silent</span> <span class=\"ds-chip ds-sel\">Balanced</span> <span class=\"ds-chip\">Turbo</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;height:28px;padding:0 11px;border-radius:14px;background:rgba(36,40,59,.62);border:1px solid rgba(192,202,245,.16);color:#c0caf5;font:600 11px 'SF Pro Text',system-ui,sans-serif;transition:background .14s;cursor:pointer}.ds-chip:hover{background:rgba(36,40,59,.92)}.ds-chip.ds-sel{background:#7aa2f7;border-color:transparent;color:#1a1b26}"
+    },
+    {
+      "name": "Page Header",
+      "kind": "nav",
+      "refersTo": "row",
+      "description": "28px back circle with a chevron and a 15/700 title. The only header on the surface; home has none.",
+      "html": "<div class=\"ds-pagehead\"><span class=\"ds-back\">‹</span><span class=\"ds-pagetitle\">Battery</span></div>",
+      "css": ".ds-pagehead{display:flex;align-items:center;gap:6px;font-family:'SF Pro Text',system-ui,sans-serif;color:#c0caf5}.ds-back{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:14px;background:rgba(36,40,59,.62);border:1px solid rgba(192,202,245,.16);font:16px 'JetBrainsMono Nerd Font',monospace;cursor:pointer;transition:background .16s}.ds-back:hover{background:rgba(36,40,59,.92)}.ds-pagetitle{margin-left:4px;font-size:15px;font-weight:700}"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "section-label",
+      "description": "Uppercase 10/600 grouped-list header between Row_ groups on a page.",
+      "html": "<div class=\"ds-section\">POWER</div>",
+      "css": ".ds-section{margin:6px 0 0 4px;font:600 10px 'SF Pro Text',system-ui,sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#565f89}"
+    },
+    {
+      "name": "Pill (collapsed island)",
+      "kind": "custom",
+      "refersTo": "pill",
+      "description": "40px black capsule: clock, workspace pills, tray, battery. No status dot; battery tints accent while charging, danger below 20%. Theme-independent otherwise.",
+      "html": "<div class=\"ds-pill\"><span class=\"ds-clock\">04:44</span><span class=\"ds-ws ds-ws-focus\"></span><span class=\"ds-ws\"></span><span class=\"ds-batt\">80%</span><span class=\"ds-batt ds-batt-chg\">80%</span></div>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 15px;border-radius:20px;background:#050505;color:#f5f5f7;font-family:'SF Pro Text',system-ui,sans-serif;box-shadow:0 2px 0 rgba(0,0,0,.06),0 4px 4px rgba(0,0,0,.06),0 6px 8px rgba(0,0,0,.06),0 8px 12px rgba(0,0,0,.06)}.ds-clock{font-size:14px;font-weight:600}.ds-ws{width:8px;height:6px;border-radius:3px;background:#8e8e93;transition:width .16s cubic-bezier(.33,1,.68,1)}.ds-ws-focus{width:22px;background:#7aa2f7}.ds-batt{font-size:12px;color:#8e8e93}.ds-batt-chg{color:#7aa2f7}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Island That Grows Into Glass",
+    "overview": "At rest the surface is a black Dynamic Island: an opaque #050505 pill, 40px tall, holding clock, workspace dots, tray and battery. Everything else grows out of that pill. OSD and now-playing stay black and capsule-shaped; only the control centre changes material, becoming a 360px sheet of frosted theme-tinted glass with a 28px corner, a hairline edge, a one-pixel specular top highlight and a soft stacked shadow. Blur is not the shell's job: Hyprland blurs the acs-island layer namespace, so glass is simply the theme background at 0.62 alpha and the compositor does the rest.\n\nThe palette is not owned by the shell. Every glass colour is one of the Omarchy theme's colors.toml keys, read at runtime, optionally at a fixed alpha: background is the glass, lighter_background the tiles, foreground the text and the hairlines, dark_foreground the secondary text, muted the resting circles and slider tracks, red the danger colour, accent the one state colour. The shell hard-codes no hue at all for the control centre; only the panel glass alpha still knows about dark versus light mode. There is no title bar and no floating action glyph: the control centre is a grid of glass modules, and state lives in a 30px icon circle that fills with the accent when on, never in a filled tile. Sliders are thick 30px capsules whose glyph rides inside a fill of the theme foreground.\n\nOne text face (SF Pro Text) and one glyph face (JetBrainsMono Nerd Font, Material Design range) carry the whole surface. Density is macOS Control Center density: 10px gaps between modules, 10px padding inside them, 12/600 labels over 10/400 subs.",
+    "keyCharacteristics": [
+      "Black opaque pill at rest; glass only when the control centre is open.",
+      "Palette taken wholesale from the Omarchy theme (accent, background tiers, foreground tiers, muted, red); the shell owns only alphas and the pill greys.",
+      "State is shown in the icon circle (accent fill), never by tinting the tile.",
+      "Glyphs are Material codepoints from the Nerd Font, written as \\u{...} escapes in the root.ic map and centred on their ink, not their advance box.",
+      "One motion grammar: 240ms OutCubic for the island's size, 160ms colour, 120ms press scale."
+    ],
+    "rules": [
+      { "name": "The Borrowed Palette Rule", "body": "The shell never hard-codes a hue for glass surfaces. Every control-centre colour is a colors.toml key, optionally through a(colour, alpha). A new token is a new theme key or a new alpha on an existing one, never a new hex; the literals on the root are fallbacks for before the file loads.", "section": "colors" },
+      { "name": "The Circle Carries State Rule", "body": "On/off is shown by the icon circle filling with accent. A Module's background never changes with state, only with hover.", "section": "colors" },
+      { "name": "The Black Pill Rule", "body": "The collapsed pill, the OSD capsule and the media notify are pill black with pillText / pillDim type regardless of theme. Glass begins only when root.control is true. The theme reaches the pill only through accent (focused workspace, charging battery, playing note) and danger (urgent workspace, low battery).", "section": "colors" },
+      { "name": "The Two-Line Module Rule", "body": "A control names itself with a 12/600 label and, when it has state to report, a 10/400 or 11/400 sub in text2. There is no third line.", "section": "typography" },
+      { "name": "The One Bold Rule", "body": "Font.Bold appears only on page titles and today's date. Everything else that needs emphasis is DemiBold.", "section": "typography" },
+      { "name": "The Ink-Centred Glyph Rule", "body": "Glyph is an Item sized to the glyph's TextMetrics.tightBoundingRect, with the inner Text offset by the difference between the tight and advance boxes. anchors.centerIn therefore centres the visible ink. Never draw a Nerd Font glyph with a bare Text.", "section": "typography" },
+      { "name": "The Compositor Blurs Rule", "body": "Never add blur, MultiEffect or FastBlur in QML. Frosting comes from the acs-island layer rule; the shell only sets alpha.", "section": "elevation" },
+      { "name": "The Hairline Rule", "body": "Every glass surface has a 1px edge border and a 1px specular top. Nothing has a thicker border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do derive every new surface colour from a colors.toml key via a(themeX, alpha); add it beside the existing readonly property color tokens on the root and give the source property a fallback literal.",
+      "Do show state in a Circle (accent when on) and keep the tile at tile.",
+      "Do add glyphs to root.ic as \\u{...} Material codepoints and draw them with Glyph, which centres on ink.",
+      "Do keep the 12/600 label + 10/400 sub pair for any new tile or row.",
+      "Do use Module for anything glass and Row_ for anything in a list; both already carry edge, specular and hover.",
+      "Do keep new island states inside the width/height/radius ternaries so the 240ms OutCubic growth covers them.",
+      "Do route anything that must re-theme through applyTheme(); the island theme IPC and the open-control reload already call it."
+    ],
+    "donts": [
+      "Don't hard-code a hue or a white/black alpha for glass; every control-centre colour is a theme key, and root.dark is consulted only for the glass alpha.",
+      "Don't tint a Module's background to show on/off.",
+      "Don't add blur or shadow effects in QML; blur is Hyprland's and the island shadow is the four stacked rectangles.",
+      "Don't put a title bar, close button or floating power glyph on the control centre; pages get a PageHeader and home gets none.",
+      "Don't make the collapsed pill, OSD or media notify glass; they stay pill black under every theme.",
+      "Don't put a status dot or any second colour signal in the pill; the battery percentage tint and the workspace dots are its only colour.",
+      "Don't introduce a second text face or SF Pro Display; every string is SF Pro Text and every icon is a Nerd Font Material glyph."
+    ]
+  }
+}
